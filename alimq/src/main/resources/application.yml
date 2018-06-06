@@ -1,0 +1,18 @@
+server:
+  port: 80
+mq:
+ accesskey: xxxx
+ secretkey: aaaaa
+ onsaddr: http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet
+ topic: dp_flask
+ producerId: PID-java-producer1
+ consumerId: CID-java-consumer1
+ subExpression: 1
+ suspendTimeMillis: 100
+ maxReconsumeTimes: 10
+ sendMsgTimeoutMillis: 3000
+
+
+
+
+
