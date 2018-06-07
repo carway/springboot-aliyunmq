@@ -4,7 +4,10 @@ import com.aliyun.openservices.ons.api.Action;
 import com.aliyun.openservices.ons.api.ConsumeContext;
 import com.aliyun.openservices.ons.api.Message;
 import com.aliyun.openservices.ons.api.MessageListener;
+import com.zjw.aliyunmq.config.SpringContextHolder;
+import com.zjw.aliyunmq.service.BusinessService;
 import lombok.extern.slf4j.Slf4j;
+
 
 
 /**
@@ -13,19 +16,26 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2018/6/5.
  */
 @Slf4j
-public class AliMqConsumerListener implements MessageListener {
+public class AliMqConsumerListener implements MessageListener{
 
 
     @Override
     public Action consume(Message message, ConsumeContext consumeContext) {
+        //因为listener不能直接注入，所以只能从SpringContextHolder获取bean
+        BusinessService businessService = SpringContextHolder.getBean("businessService");
+		
         String msg = "";
         String key = message.getKey();
         // 根据业务唯一标识的 key 做幂等处理
+		//TODO
+		
         try {
             msg = new String(message.getBody(), "UTF-8");
             log.info("消费成功，消息为：" + msg);
-            //do something..
-            //TODO
+			
+            //调用相应的service处理消息
+            businessService.doSomething();
+			
             return Action.CommitMessage;
         } catch (Exception e) {
             //消费失败
@@ -35,4 +45,5 @@ public class AliMqConsumerListener implements MessageListener {
         }
 
     }
+
 }
