@@ -16,14 +16,13 @@ springboot集成阿里云MQ
 ##### 发送消息参数说明
 
 |参数名|	参数说明|
-
 | --------   | -----  |
 |ProducerId|	您在控制台创建的 Producer ID|
 |SendMsgTimeoutMillis	|设置消息发送的超时时间，单位（毫秒），默认：3000|
 |CheckImmunityTimeInSeconds（事务消息）|	设置事务消息第一次回查的最快时间，单位（秒）|
 |shardingKey（顺序消息）|	顺序消息中用来计算不同分区的值|
 
-![image](http://om9j2ardo.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720180607122235.png)
+![image](http://om9j2ardo.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720180607122953.png)
 ##### 订阅消息参数说明
 
 |参数名|	参数说明|
